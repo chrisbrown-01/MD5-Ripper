@@ -5,9 +5,11 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MD5-Ripper", "MD5-Ripper\MD5-Ripper.csproj", "{5535743E-811E-47CB-B6B4-B3C3DB198C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{F825BC3D-F612-47C8-8377-3CFEF5934416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{F825BC3D-F612-47C8-8377-3CFEF5934416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{72AEAAA0-7997-405F-9D7E-FF1342129CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{72AEAAA0-7997-405F-9D7E-FF1342129CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{93CE0087-D595-428F-AA71-18C6C4F7752A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{72AEAAA0-7997-405F-9D7E-FF1342129CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72AEAAA0-7997-405F-9D7E-FF1342129CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72AEAAA0-7997-405F-9D7E-FF1342129CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CE0087-D595-428F-AA71-18C6C4F7752A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CE0087-D595-428F-AA71-18C6C4F7752A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CE0087-D595-428F-AA71-18C6C4F7752A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CE0087-D595-428F-AA71-18C6C4F7752A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

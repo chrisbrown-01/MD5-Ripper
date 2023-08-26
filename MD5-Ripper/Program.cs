@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using static Shared.FilePaths;
-using static Shared.MD5_Helpers;
+using static Shared.Helpers;
 
 namespace MD5_Ripper
 {

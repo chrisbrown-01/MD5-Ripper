@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
-    public static class MD5_Helpers
+    public static class Helpers
     {
         public static string CreateMD5Hash(string input)
         {
