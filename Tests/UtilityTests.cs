@@ -1,6 +1,6 @@
 namespace Tests
 {
-    public class DetectTests
+    public class UtilityTests
     {
         [Theory]
         [InlineData("d41d8cd98f00b204e9800998ecf8427e", true)]
@@ -16,9 +16,18 @@ namespace Tests
         [InlineData("202cb962ac59075b964b07152d234b703", false)]
         [InlineData("test", false)]
         [InlineData("", false)]
-        public void Test_IsMD5Hash(string hash, bool expected)
+        public void Theory_IsMD5Hash(string hash, bool expected)
         {
             IsMD5Hash(hash).Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData("password", "5F4DCC3B5AA765D61D8327DEB882CF99")]
+        [InlineData("rockyou_123!", "853858F1E3E63765F51CB5BBBB0F4743")]
+        [InlineData("PR445#EdFY*1k$s!%j8C", "6F82818727870F99D51AF9669BC837C1")]
+        public void Theory_CreateMD5Hash(string plaintext, string hash)
+        {
+            CreateMD5Hash(plaintext).Should().Be(hash);
         }
     }
 }

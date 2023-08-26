@@ -5,11 +5,11 @@ using System;
 using System.Threading.Tasks;
 using static Shared.FilePaths;
 
-// TODO: run benchmarking
+// TODO: run benchmarking, set deprecated after finalizing
 namespace Benchmarking
 {
     [MemoryDiagnoser]
-    public class Benchmarks_RockYou
+    internal class Benchmarks_RockYou
     {
         private readonly string readPath = LIST_ROCKYOU_PATH;
         private readonly string writePath = LIST_ROCKYOU_HASHED_PATH;

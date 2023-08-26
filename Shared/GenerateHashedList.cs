@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using static Shared.Helpers;
+using static Shared.Utility;
 
 namespace Shared
 {
+    // TODO: set deprecated after finalizing
     public static class GenerateHashedList
     {
         public static async Task CreateHashesFileAsync_StreamReader_Unoptimized(string readPath, string writePath)
@@ -26,7 +27,6 @@ namespace Shared
 
             foreach (var item in listArray)
             {
-                //if (item is null) continue;
                 await outputFile.WriteLineAsync(CreateMD5Hash(item));
             }
         }
@@ -52,7 +52,6 @@ namespace Shared
 
             foreach (var item in listArray)
             {
-                //if (item is null) continue;
                 var inputBytes = Encoding.UTF8.GetBytes(item);
                 var hashBytes = MD5.HashData(inputBytes);
                 await outputFile.WriteLineAsync(Convert.ToHexString(hashBytes));

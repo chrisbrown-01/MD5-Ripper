@@ -8,7 +8,7 @@ using static Shared.FilePaths;
 namespace Benchmarking
 {
     [MemoryDiagnoser]
-    public class Benchmarks_10k
+    internal class Benchmarks_10k
     {
         private readonly string readPath = LIST_10K_PATH;
         private readonly string writePath = LIST_10K_HASHED_PATH;
