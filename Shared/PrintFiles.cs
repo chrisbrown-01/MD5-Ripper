@@ -12,10 +12,10 @@ namespace Shared
         public static async Task PrintFileContentsToConsole_ReadAllLinesIntoMemoryAsync(string path)
         {
             var array = await File.ReadAllLinesAsync(path);
-            foreach (var item in array)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in array)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
 
         public static async Task PrintFileContentsToConsole_ReadAllLinesAsStreamAsync(string path)
@@ -25,7 +25,7 @@ namespace Shared
             string? item;
             while ((item = await reader.ReadLineAsync()) != null)
             {
-                Console.WriteLine(item);
+                //Console.WriteLine(item);
             }
         }
     }
