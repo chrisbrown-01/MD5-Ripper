@@ -39,19 +39,33 @@ namespace Shared
             {
                 var inputBytes = Encoding.UTF8.GetBytes(line);
                 var hashBytes = MD5.HashData(inputBytes);
-                dictionary.Add(Convert.ToHexString(hashBytes), line);
+                dictionary.TryAdd(Convert.ToHexString(hashBytes), line);
             }
 
-            //using var writer = new BinaryWriter(File.Open(writePath, FileMode.Create));
-            using var writer = new DeflateStream(File.Open(writePath, FileMode.Create), CompressionMode.Compress);
-            foreach (var pair in dictionary)
+            using var fileStream = new FileStream(writePath, FileMode.Create);
+            using var writer = new StreamWriter(fileStream);
+            string json = JsonSerializer.Serialize(dictionary);
+            writer.Write(json);
+        }
+
+        public static async Task CreateDictionaryBinFileAsync_Compressed_HashKey(string readPath, string writePath)
+        {
+            using var reader = new StreamReader(readPath);
+            var dictionary = new Dictionary<string, string>();
+
+            string? line;
+            while ((line = await reader.ReadLineAsync()) != null)
             {
-                //writer.Write(pair.Key);
-                //writer.Write(pair.Value);
-
-                writer.Write(Encoding.ASCII.GetBytes(pair.Key), 0, Encoding.ASCII.GetBytes(pair.Key).Length);
-                writer.Write(Encoding.ASCII.GetBytes(pair.Value), 0, Encoding.ASCII.GetBytes(pair.Value).Length);
+                var inputBytes = Encoding.UTF8.GetBytes(line);
+                var hashBytes = MD5.HashData(inputBytes);
+                dictionary.TryAdd(Convert.ToHexString(hashBytes), line);
             }
+
+            using var fileStream = new FileStream(writePath, FileMode.Create);
+            using var compressionStream = new DeflateStream(fileStream, CompressionMode.Compress);
+            using var writer = new StreamWriter(compressionStream);
+            string json = JsonSerializer.Serialize(dictionary);
+            writer.Write(json);
         }
     }
 }
