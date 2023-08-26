@@ -10,9 +10,11 @@ namespace MD5_Ripper
     // TODO: precomputed hashtable/dictionary of rockyou, stored in file or in app?
     internal class Program
     {
-        internal static void Main(string[] args)
+        internal static async Task Main(string[] args)
         {
-            PrintMD5HashAsync();
+            //PrintMD5HashAsync();
+
+            await GenerateHashedList.CreateHashesFileAsync_StreamReader(LIST_10K_PATH, LIST_10K_HASHED_PATH);
         }
 
         internal static void PrintMD5HashAsync()

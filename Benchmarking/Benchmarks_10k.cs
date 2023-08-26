@@ -10,8 +10,8 @@ namespace Benchmarking
     [MemoryDiagnoser]
     public class Benchmarks_10k
     {
-        private string readPath = LIST_10K_PATH;
-        private string writePath = LIST_10K_HASHED_PATH;
+        private readonly string readPath = LIST_10K_PATH;
+        private readonly string writePath = LIST_10K_HASHED_PATH;
 
         [Benchmark]
         public async Task CreateHashesFileAsync_StreamReader()

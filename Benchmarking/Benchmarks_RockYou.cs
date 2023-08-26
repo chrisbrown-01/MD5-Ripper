@@ -5,13 +5,14 @@ using System;
 using System.Threading.Tasks;
 using static Shared.FilePaths;
 
+// TODO: run benchmarking
 namespace Benchmarking
 {
     [MemoryDiagnoser]
     public class Benchmarks_RockYou
     {
-        private string readPath = LIST_ROCKYOU_PATH;
-        private string writePath = LIST_ROCKYOU_HASHED_PATH;
+        private readonly string readPath = LIST_ROCKYOU_PATH;
+        private readonly string writePath = LIST_ROCKYOU_HASHED_PATH;
 
         [Benchmark]
         public async Task CreateHashesFileAsync_StreamReader()

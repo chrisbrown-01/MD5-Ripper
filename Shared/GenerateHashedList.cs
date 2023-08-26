@@ -35,13 +35,12 @@ namespace Shared
         {
             using var reader = new StreamReader(readPath);
             using var outputFile = new StreamWriter(writePath);
-            using var md5 = MD5.Create();
 
             string? line;
             while ((line = await reader.ReadLineAsync()) != null)
             {
                 var inputBytes = Encoding.UTF8.GetBytes(line);
-                var hashBytes = md5.ComputeHash(inputBytes);
+                var hashBytes = MD5.HashData(inputBytes);
                 await outputFile.WriteLineAsync(Convert.ToHexString(hashBytes));
             }
         }
@@ -50,13 +49,12 @@ namespace Shared
         {
             var listArray = await File.ReadAllLinesAsync(readPath);
             using var outputFile = new StreamWriter(writePath);
-            using var md5 = MD5.Create();
 
             foreach (var item in listArray)
             {
                 //if (item is null) continue;
                 var inputBytes = Encoding.UTF8.GetBytes(item);
-                var hashBytes = md5.ComputeHash(inputBytes);
+                var hashBytes = MD5.HashData(inputBytes);
                 await outputFile.WriteLineAsync(Convert.ToHexString(hashBytes));
             }
         }
