@@ -7,10 +7,10 @@ namespace Shared
 {
     public static class GenerateHashedList
     {
-        public static async Task CreateHashesFileAsync_StreamReader_Unoptimized(string path)
+        public static async Task CreateHashesFileAsync_StreamReader_Unoptimized(string readPath, string writePath)
         {
-            using var reader = new StreamReader(path);
-            using var outputFile = new StreamWriter(path);
+            using var reader = new StreamReader(readPath);
+            using var outputFile = new StreamWriter(writePath);
 
             string? line;
             while ((line = await reader.ReadLineAsync()) != null)
@@ -19,10 +19,10 @@ namespace Shared
             }
         }
 
-        public static async Task CreateHashesFileAsync_FileReadAllLinesIntoMemory_Unoptimized(string path)
+        public static async Task CreateHashesFileAsync_FileReadAllLinesIntoMemory_Unoptimized(string readPath, string writePath)
         {
-            var listArray = await File.ReadAllLinesAsync(path);
-            using var outputFile = new StreamWriter(path);
+            var listArray = await File.ReadAllLinesAsync(readPath);
+            using var outputFile = new StreamWriter(writePath);
 
             foreach (var item in listArray)
             {
@@ -31,10 +31,10 @@ namespace Shared
             }
         }
 
-        public static async Task CreateHashesFileAsync_StreamReader(string path)
+        public static async Task CreateHashesFileAsync_StreamReader(string readPath, string writePath)
         {
-            using var reader = new StreamReader(path);
-            using var outputFile = new StreamWriter(path);
+            using var reader = new StreamReader(readPath);
+            using var outputFile = new StreamWriter(writePath);
             using var md5 = MD5.Create();
 
             string? line;
@@ -46,10 +46,10 @@ namespace Shared
             }
         }
 
-        public static async Task CreateHashesFileAsync_FileReadAllLinesIntoMemory(string path)
+        public static async Task CreateHashesFileAsync_FileReadAllLinesIntoMemory(string readPath, string writePath)
         {
-            var listArray = await File.ReadAllLinesAsync(path);
-            using var outputFile = new StreamWriter(path);
+            var listArray = await File.ReadAllLinesAsync(readPath);
+            using var outputFile = new StreamWriter(writePath);
             using var md5 = MD5.Create();
 
             foreach (var item in listArray)
@@ -61,12 +61,12 @@ namespace Shared
             }
         }
 
-        public static void CreateHashesFile_Parallel(string path) // TODO: note that lines may be out of order from password list
+        public static void CreateHashesFile_Parallel(string readPath, string writePath) // TODO: note that lines may be out of order from password list
         {
-            using var outputFile = new StreamWriter(path);
+            using var outputFile = new StreamWriter(writePath);
             var _lock = new SemaphoreSlim(1); // Limit the number of threads that can access the StreamWriter object
 
-            Parallel.ForEach(File.ReadLines(path), async (line) =>
+            Parallel.ForEach(File.ReadLines(readPath), async (line) =>
             {
                 var hash = CreateMD5Hash(line);
                 await _lock.WaitAsync();
