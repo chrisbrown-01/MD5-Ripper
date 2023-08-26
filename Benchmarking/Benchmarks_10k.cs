@@ -8,10 +8,10 @@ using static Shared.FilePaths;
 namespace Benchmarking
 {
     [MemoryDiagnoser]
-    internal class Benchmarks_10k
+    public class Benchmarks_10k
     {
-        private readonly string readPath = LIST_10K_PATH;
-        private readonly string writePath = LIST_10K_HASHED_PATH;
+        private readonly string readPath = LIST_PATH_10K;
+        private readonly string writePath = HASHED_LIST_PATH_10K;
 
         [Benchmark]
         public async Task CreateHashesFileAsync_StreamReader()

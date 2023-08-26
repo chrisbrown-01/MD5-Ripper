@@ -9,10 +9,10 @@ using static Shared.FilePaths;
 namespace Benchmarking
 {
     [MemoryDiagnoser]
-    internal class Benchmarks_RockYou
+    public class Benchmarks_RockYou
     {
-        private readonly string readPath = LIST_ROCKYOU_PATH;
-        private readonly string writePath = LIST_ROCKYOU_HASHED_PATH;
+        private readonly string readPath = LIST_PATH_ROCKYOU;
+        private readonly string writePath = HASHED_LIST_PATH_ROCKYOU;
 
         [Benchmark]
         public async Task CreateHashesFileAsync_StreamReader()
