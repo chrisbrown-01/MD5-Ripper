@@ -10,7 +10,7 @@ Overall, I wanted to experiment with the following topics:
 
 Findings:
 
-- Performing operations when reading from a text file using StreamReader is faster than first loading the file into memory using `File.ReadAllLinesAsync`
+- Performing operations when reading from a text file using StreamReader is faster and uses less memory than first loading the file into memory using `File.ReadAllLinesAsync`
 - Bruteforcing all possible character sequences is quicker with multithreading, and using character arrays & string objects is faster than using StringBuilder objects
 
 See BenchmarkDotNet results below:
