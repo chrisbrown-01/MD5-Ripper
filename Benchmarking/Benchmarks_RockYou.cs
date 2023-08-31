@@ -5,7 +5,6 @@ using System;
 using System.Threading.Tasks;
 using static Shared.FilePaths;
 
-// TODO: run benchmarking, set deprecated after finalizing
 namespace Benchmarking
 {
     [MemoryDiagnoser]

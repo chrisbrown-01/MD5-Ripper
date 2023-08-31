@@ -10,7 +10,6 @@ using static Shared.PrintFiles;
 
 namespace Benchmarking
 {
-    // TODO: run benchmarks
     [MemoryDiagnoser]
     public class Benchmarks_PrintFiles
     {

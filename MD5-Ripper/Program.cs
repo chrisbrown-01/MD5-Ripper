@@ -6,7 +6,6 @@ using static Shared.Utility;
 
 namespace MD5_Ripper
 {
-    // TODO: precomputed compressed hashtable/dictionary of rockyou, stored in file or in app?
     internal class Program
     {
         public static async Task Main(string[] args)
@@ -21,8 +20,18 @@ namespace MD5_Ripper
 
             //await DictionaryFileIO.CreateDictionaryBinFileAsync_PlaintextKey(LIST_PATH_10K, DICTIONARY_BIN_PATH_10K);
             //await DictionaryFileIO.CreateDictionaryBinFileAsync_HashKey(LIST_PATH_10K, DICTIONARY_BIN_PATH_10K);
-            await DictionaryFileIO.CreateDictionaryBinFileAsync_HashKey(LIST_PATH_ROCKYOU, DICTIONARY_BIN_PATH_ROCKYOU);
+            //await DictionaryFileIO.CreateDictionaryBinFileAsync_HashKey(LIST_PATH_ROCKYOU, DICTIONARY_BIN_PATH_ROCKYOU);
             //var dictionary = DictionaryFileIO.ReadDictionaryBinFile(DICTIONARY_BIN_PATH_10K);
+
+            //foreach (string password in BruteForce.GeneratePasswords(4))
+            //{
+            //    Console.WriteLine(password);
+            //}
+
+            //BruteForce.Test(3);
+            //BruteForce.GenerateAllPasswordsOfLength_SingleThreaded(2);
+            //BruteForce.GenerateAllPasswordsOfLength_SingleThreaded_WithStringBuilder(2);
+            BruteForce.GenerateAllPasswordsOfLength_MultiThreaded_WithStringBuilder(3);
         }
 
         public static void PrintMD5HashAsync()

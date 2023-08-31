@@ -5,7 +5,6 @@ using static Shared.Utility;
 
 namespace Shared
 {
-    // TODO: set deprecated after finalizing
     public static class GenerateHashedList
     {
         public static async Task CreateHashesFileAsync_StreamReader_Unoptimized(string readPath, string writePath)
@@ -58,7 +57,7 @@ namespace Shared
             }
         }
 
-        public static void CreateHashesFile_Parallel(string readPath, string writePath) // TODO: note that lines may be out of order from password list
+        public static void CreateHashesFile_Parallel(string readPath, string writePath) // Note that lines may be out of order from password list
         {
             using var outputFile = new StreamWriter(writePath);
             var _lock = new SemaphoreSlim(1); // Limit the number of threads that can access the StreamWriter object

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmarking.Benchmarks_BruteForce-20230830-211621</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.7, Windows 10 (10.0.19045.3324/22H2/2022Update)
+Intel Core i7-1065G7 CPU 1.30GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.306
+  [Host]     : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                                                         Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>GenerateAllPasswordsOfLength_MultiThreaded_Length3</td><td>5.513 ms</td><td>0.1621 ms</td><td>0.4678 ms</td><td>5.724 ms</td><td>6437.5000</td><td>25.64 MB</td>
+</tr><tr><td>GenerateAllPasswordsOfLength_MultiThreaded_WithStringBuilder_Length3</td><td>7.067 ms</td><td>0.1398 ms</td><td>0.1373 ms</td><td>7.034 ms</td><td>6445.3125</td><td>25.65 MB</td>
+</tr><tr><td>GenerateAllPasswordsOfLength_SingleThreaded_WithStringBuilder_Length3</td><td>11.576 ms</td><td>0.2272 ms</td><td>0.4039 ms</td><td>11.677 ms</td><td>6421.8750</td><td>25.62 MB</td>
+</tr><tr><td>GenerateAllPasswordsOfLength_SingleThreaded_Length3</td><td>8.343 ms</td><td>0.1648 ms</td><td>0.3136 ms</td><td>8.284 ms</td><td>6421.8750</td><td>25.62 MB</td>
+</tr></tbody></table>
+</body>
+</html>
