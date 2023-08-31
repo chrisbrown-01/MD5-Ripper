@@ -1,7 +1,18 @@
 # MD5-Ripper
 
 This project calculates MD5 hashes of the rockyou and 10k-most-common password wordlists. 
-This was written to experiment with performance improvements when comparing files being loaded into memory vs. streaming them in C#. 
+The BruteForce class also attempts to determine the corresponding plaintext character sequence for the MD5 hash supplied as an argument.
+
+Overall, I wanted to experiment with the following topics:
+
+- determine performance differences when comparing files being loaded into memory vs. streaming them in C#
+- determine performance differences when generating every possible character sequence of length 3 with multi-threading (Parallel.For loops) vs. single-threading (simple For loops)
+
+Findings:
+
+- Performing operations when reading from a text file using StreamReader is faster than first loading the file into memory using `File.ReadAllLinesAsync`
+- Bruteforcing all possible character sequences is quicker with multithreading, and using character arrays & string objects is faster than using StringBuilder objects
+
 See BenchmarkDotNet results below:
 
 ### Benchmarks_10k ###
@@ -24,3 +35,15 @@ See BenchmarkDotNet results below:
 | PrintFileContentsToConsole_ReadAllLinesIntoMemoryAsync_RockYou | 5,075.651 ms | 160.3672 ms | 472.8463 ms | 4,894.969 ms | 275000.0000 | 96000.0000 | 7000.0000 | 1972.22 MB |
 |       PrintFileContentsToConsole_ReadAllLinesAsStreamAsync_10k |     1.238 ms |   0.0602 ms |   0.1767 ms |     1.189 ms |    269.5313 |          - |         - |    1.08 MB |
 |   PrintFileContentsToConsole_ReadAllLinesAsStreamAsync_RockYou | 1,562.837 ms |  15.3794 ms |  13.6334 ms | 1,561.141 ms | 403000.0000 |          - |         - | 1606.77 MB |
+
+
+
+### Benchmarks_BruteForce ###
+
+
+|                                                                Method |      Mean |     Error |    StdDev |    Median |      Gen0 | Allocated |
+|---------------------------------------------------------------------- |----------:|----------:|----------:|----------:|----------:|----------:|
+|                    GenerateAllPasswordsOfLength_MultiThreaded_Length3 |  5.513 ms | 0.1621 ms | 0.4678 ms |  5.724 ms | 6437.5000 |  25.64 MB |
+|  GenerateAllPasswordsOfLength_MultiThreaded_WithStringBuilder_Length3 |  7.067 ms | 0.1398 ms | 0.1373 ms |  7.034 ms | 6445.3125 |  25.65 MB |
+| GenerateAllPasswordsOfLength_SingleThreaded_WithStringBuilder_Length3 | 11.576 ms | 0.2272 ms | 0.4039 ms | 11.677 ms | 6421.8750 |  25.62 MB |
+|                   GenerateAllPasswordsOfLength_SingleThreaded_Length3 |  8.343 ms | 0.1648 ms | 0.3136 ms |  8.284 ms | 6421.8750 |  25.62 MB |

@@ -31,7 +31,11 @@ namespace MD5_Ripper
             //BruteForce.Test(3);
             //BruteForce.GenerateAllPasswordsOfLength_SingleThreaded(2);
             //BruteForce.GenerateAllPasswordsOfLength_SingleThreaded_WithStringBuilder(2);
-            BruteForce.GenerateAllPasswordsOfLength_MultiThreaded_WithStringBuilder(3);
+            //BruteForce.GenerateAllPasswordsOfLength_MultiThreaded_WithStringBuilder(3);
+            //BruteForce.GenerateAllPasswordsOfLength_MultiThreaded(2);
+
+            var hash = CreateMD5Hash("_@d1f");
+            BruteForce.BruteForcePasswordGivenHash(hash); // did not solve after 20+ minutes
         }
 
         public static void PrintMD5HashAsync()
